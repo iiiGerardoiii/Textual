@@ -744,9 +744,9 @@
 - (NSFont *)systemSpecificTextFieldFontWithSize:(CGFloat)fontSize
 {
 	if ([XRSystemInformation isUsingOSXYosemiteOrLater]) {
-		return [NSFont systemFontOfSize:fontSize];
+		return [NSFont fontWithName:@"Menlo" size:fontSize];
 	} else {
-		return [NSFont fontWithName:@"Helvetica" size:fontSize];
+		return [NSFont fontWithName:@"Menlo" size:fontSize];
 	}
 }
 
