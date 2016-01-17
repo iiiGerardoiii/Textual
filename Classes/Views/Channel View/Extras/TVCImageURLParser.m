@@ -222,6 +222,13 @@
 				return [NSString stringWithFormat:@"https://leetfil.es/vid/%@_thumb.png", vid];
 			}
 		}
+	} else if ([host hasSuffix:@"i.4cdn.org"]) {
+        	NSObjectIsEmptyAssertReturn(path, nil);
+        	if ([path hasSuffix:@".webm"]) {
+            		NSString *s = [path substringToIndex:[path length] - 5];
+            		
+            		return [NSString stringWithFormat:@"%@://%@%@s.jpg", scheme, host, s];
+        	}
 	} else if ([host hasSuffix:@"movapic.com"]) {
 		if ([path hasPrefix:@"/pic/"]) {
 			NSString *s = [path substringFromIndex:5];
