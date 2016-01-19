@@ -229,7 +229,20 @@
             NSString *s = [path substringToIndex:[path length] - 5];
             return [NSString stringWithFormat:@"%@://%@%@s.jpg", scheme, host, s];
         }
-	} else if ([host hasSuffix:@"movapic.com"]) {
+    } else if ([host hasSuffix:@"media.8ch.net"]) {
+        NSObjectIsEmptyAssertReturn(path, nil);
+        if ([path hasSuffix:@".webm"]) {
+            
+            NSString *pathNoExtension = [path substringToIndex:[path length] - 5];
+            
+            NSRange srcLocation = [pathNoExtension rangeOfString:@"src" options:NSBackwardsSearch];
+            if(NSNotFound != srcLocation.location){
+                NSString *replacedSrcPath = [pathNoExtension stringByReplacingCharactersInRange: srcLocation withString: @"thumb"];
+                return [NSString stringWithFormat:@"%@://%@%@.jpg", scheme, host, replacedSrcPath];
+                //printf("REP: %s\n", [result UTF8String]);
+            }
+        }
+    } else if ([host hasSuffix:@"movapic.com"]) {
 		if ([path hasPrefix:@"/pic/"]) {
 			NSString *s = [path substringFromIndex:5];
 
