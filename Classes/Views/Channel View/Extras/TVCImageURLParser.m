@@ -229,7 +229,7 @@
             NSString *s = [path substringToIndex:[path length] - 5];
             return [NSString stringWithFormat:@"%@://%@%@s.jpg", scheme, host, s];
         }
-    } else if ([host hasSuffix:@"media.8ch.net"]) {
+    } else if ([host hasSuffix:@"8ch.net"]) {
         NSObjectIsEmptyAssertReturn(path, nil);
         if ([path hasSuffix:@".webm"]) {
             
